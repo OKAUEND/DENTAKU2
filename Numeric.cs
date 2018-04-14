@@ -12,16 +12,17 @@ namespace WindowsFormsApp1
         decimal TotalValue;
         decimal RightTerm;
 
-        //表示用
-        string DisplayValue;
-
         //計算操作ログ
 
         //計算モード
         string NumericMode = string.Empty;
         int NumericTimes = 0;
 
-        public void DataRetention(string InputFigure)
+        //データ保持用のリストを宣言
+        private List<LogDate> NumericList = new List<LogDate>();
+
+        //データ入力操作
+        public string DataRetention(string InputFigure)
         {
             //2回目以降連続計算入力時
             if (NumericTimes != 0 || NumericMode.Length != 0)
@@ -49,7 +50,7 @@ namespace WindowsFormsApp1
                     TotalValue = decimal.Parse(Figure + InputFigure);
                 }
             }
-
+            return TotalValue.ToString();
         }
 
         public void CalcSummation()
@@ -72,18 +73,63 @@ namespace WindowsFormsApp1
                     TotalValue = TotalValue / RightTerm;
                     break;
             }
-
+           
             //初期化
             RightTerm = 0;
             NumericMode = string.Empty;
-            
-        }
 
-        public void ModeChange(string Mode)
-        {
-            NumericMode = Mode;
+            //計算回数をインクリメント
             NumericTimes += 1;
+
         }
 
-    }    
+        public string ModeChange(string Mode)
+        {
+            //計算モードを更新
+            NumericMode = Mode;
+            return TotalValue.ToString() + (LogicSymbols());
+
+        }
+
+        private string LogicSymbols()
+        {
+            string LogicString = string.Empty;
+            switch (NumericMode)
+            {
+                case "Add":
+                    LogicString = "＋";
+                    break;
+
+                case "Subtrac":
+                    LogicString = "－";
+                    break;
+
+                case "Multipl":
+                    LogicString = "✕";
+                    break;
+
+                case "Division":
+                    LogicString = "÷";
+                    break;
+            }
+
+            return LogicString;
+        }
+
+    }
+
+    class LogDate
+    {
+        int NumericTimes { get; set; }
+        decimal NowTotalValue { get; set; }
+        decimal BeforTotalValue { get; set; }
+        decimal InputValue { get; set; }
+        string InputLog { get; set; }
+        string CalcMode { get; set; }
+
+        public string ShowHistory()
+        {
+            return $"{this.InputValue}";
+        }
+    }
 }

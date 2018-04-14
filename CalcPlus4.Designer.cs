@@ -56,6 +56,7 @@
             this.btnComma = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnNum = new System.Windows.Forms.Button();
+            this.lblLog = new System.Windows.Forms.Label();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,9 +103,10 @@
             // 
             this.lblDisplay.BackColor = System.Drawing.Color.LightCyan;
             this.lblDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDisplay.Location = new System.Drawing.Point(12, 41);
+            this.lblDisplay.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblDisplay.Location = new System.Drawing.Point(12, 31);
             this.lblDisplay.Name = "lblDisplay";
-            this.lblDisplay.Size = new System.Drawing.Size(269, 45);
+            this.lblDisplay.Size = new System.Drawing.Size(269, 55);
             this.lblDisplay.TabIndex = 1;
             this.lblDisplay.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
@@ -325,11 +327,20 @@
             this.btnNum.UseVisualStyleBackColor = true;
             this.btnNum.Click += new System.EventHandler(this.BtnNum_Click);
             // 
+            // lblLog
+            // 
+            this.lblLog.BackColor = System.Drawing.Color.LightCyan;
+            this.lblLog.Location = new System.Drawing.Point(22, 34);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(257, 19);
+            this.lblLog.TabIndex = 24;
+            // 
             // CalcPlus4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(297, 384);
+            this.Controls.Add(this.lblLog);
             this.Controls.Add(this.btnNum);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnComma);
@@ -396,6 +407,7 @@
         private System.Windows.Forms.Button btnComma;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnNum;
+        private System.Windows.Forms.Label lblLog;
     }
 }
 

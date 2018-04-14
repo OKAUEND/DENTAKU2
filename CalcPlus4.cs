@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        Numeric NumericData = new Numeric();
+        private Numeric NumericData = new Numeric();
 
         private void CalcPlus4_Load(object sender, EventArgs e)
         {
@@ -32,7 +32,8 @@ namespace WindowsFormsApp1
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            NumericData.ModeChange(button.Tag.ToString());
+            lblLog.Text = NumericData.ModeChange(button.Tag.ToString());
+
         }
 
         //数字入力処理
@@ -40,9 +41,7 @@ namespace WindowsFormsApp1
         {
             //ボタン情報取得
             Button button = (Button)sender;
-
-            NumericData.DataRetention(button.Text.ToString());
-            
+            lblDisplay.Text = NumericData.DataRetention(button.Text.ToString());
         }
     }
 }
